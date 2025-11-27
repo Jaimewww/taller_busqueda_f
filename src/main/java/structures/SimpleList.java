@@ -1,4 +1,4 @@
-/*
+/**
  * Implementación de una lista enlazada simple con operaciones básicas.
  * (pushFront, pushBack, find, remove, size, isEmpty, clear)
  * @author Jaime Landázuri

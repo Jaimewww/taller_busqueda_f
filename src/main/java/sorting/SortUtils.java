@@ -2,7 +2,7 @@ package sorting;
 
 /**
  * Utilidades para los metodos de ordenamiento
- * @author Jaime Landazuri, Alejandro Padilla
+ * @author Jaime Landazuri
  */
 
 public class SortUtils {
@@ -13,8 +13,8 @@ public class SortUtils {
      * @param y
      * @param array
      */
-    public static void swap(int x, int y, int[] array) {
-        int temp = array[x];
+    public static void swap(int x, int y, Integer[] array) {
+        Integer temp = array[x];
         array[x] = array[y];
         array[y] = temp;
     }

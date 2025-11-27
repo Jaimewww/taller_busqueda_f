@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 /**
  * Implementacion de Selecction Sort (Ordenamiento por seleccion) para arreglos de int
- * @author Jaime Landazuri, Alejandro Padilla
+ * @author Jaime Landazuri
  */
 
 public class SelectionSort {
-    public static void sort(int [] array) {
+    public static void sort(Integer[] array) {
         System.out.println("Estado inicial: " + Arrays.toString(array));
         int length = array.length;
         int minIndex; //Indice del numero menor en el arrgelo

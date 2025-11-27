@@ -17,13 +17,13 @@ import java.util.List;
  * Utilidad para leer archivos CSV y extraer columnas como arreglos de Double.
  * Soporta valores numericos y fechas en formato ISO 8601.
  * Se usa la libreria Apache Commons CSV para el parsing del CSV.
- * @author Jaime Landazuri, Alejandro Padilla
+ * @author Jaime Landazuri
  */
 
 public class CsvReader {
 
     // Lee una columna especifica de un archivo CSV y la convierte en un arreglo de Double.
-    public static Double[] readDoubleColumn(String filePath, String columnName) throws IOException {
+    public static Integer[] readIntegerColumn(String filePath, String columnName) throws IOException {
         // Configuracion del formato CSV
         CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
                 .setHeader()
@@ -33,7 +33,7 @@ public class CsvReader {
                 .build();
 
         // Lista para almacenar los valores Double
-        List<Double> doubleList = new ArrayList<>();
+        List<Integer> integerList = new ArrayList<>();
 
         try (Reader reader = new FileReader(filePath);
              CSVParser csvParser = new CSVParser(reader, csvFormat)) {
@@ -46,21 +46,14 @@ public class CsvReader {
 
                 if (!cleanedValue.isEmpty()) {
                     try {
-                        Double doubleValue = Double.parseDouble(cleanedValue);
-                        doubleList.add(doubleValue);
+                        Integer integerValue = Integer.parseInt(cleanedValue);
+                        integerList.add(integerValue);
                     } catch (NumberFormatException e) {
-                        // Intentar parsear como fecha en formato ISO 8601
-                        try {
-                            LocalDateTime date = LocalDateTime.parse(value);
-                            double timestamp = (double) date.toEpochSecond(ZoneOffset.UTC);
-                            doubleList.add(timestamp);
-                        } catch (DateTimeParseException ex) {
-                            System.err.println("Ignorando valor inválido: '" + value + "'");
-                        }
+                        System.err.println("Ignorando valor inválido: '" + value + "'");
                     }
                 }
             }
         }
-        return doubleList.toArray(new Double[0]);
+        return integerList.toArray(new Integer[0]);
     }
 }
