@@ -1,0 +1,101 @@
+id;nombre;categoria;precio;stock
+1;Laptop Dell XPS;Electrónica;1299.99;15
+2;Mouse Logitech MX;Accesorios;89.99;45
+3;Teclado Mecánico RGB;Accesorios;159.50;23
+4;Monitor Samsung 27";Electrónica;349.99;8
+5;Auriculares Sony WH;Accesorios;299.00;12
+6;Webcam Logitech C920;Accesorios;79.99;34
+7;SSD Kingston 1TB;Almacenamiento;119.99;67
+8;RAM Corsair 16GB;Componentes;89.50;28
+9;Mousepad XL;Accesorios;24.99;150
+10;Cable HDMI 2m;Cables;15.99;200
+11;Adaptador USB-C;Adaptadores;29.99;88
+12;Hub USB 4 puertos;Accesorios;35.50;56
+13;Micrófono Blue Yeti;Audio;129.99;9
+14;Soporte Laptop;Accesorios;45.00;41
+15;Lámpara LED Escritorio;Iluminación;39.99;72
+16;Silla Gaming Ergonómica;Mobiliario;399.99;5
+17;Escritorio Ajustable;Mobiliario;599.00;3
+18;Router WiFi 6;Redes;189.99;14
+19;Switch Ethernet 8p;Redes;49.99;31
+20;Impresora HP LaserJet;Periféricos;249.99;11
+21;Escáner Epson;Periféricos;159.00;7
+22;Tablet Wacom;Gráficos;349.50;6
+23;Disco Duro Externo 2TB;Almacenamiento;89.99;43
+24;Pendrive 64GB;Almacenamiento;19.99;189
+25;Tarjeta SD 128GB;Almacenamiento;34.50;95
+26;Lector Tarjetas USB;Accesorios;12.99;124
+27;Protector Pantalla;Accesorios;9.99;267
+28;Funda Laptop 15";Accesorios;29.50;78
+29;Mochila Porta Laptop;Accesorios;59.99;52
+30;Batería Portátil 20000mAh;Energía;45.99;38
+31;Cargador USB 65W;Energía;39.99;64
+32;Cable Lightning 2m;Cables;19.99;143
+33;Cable USB-C 3m;Cables;24.99;112
+34;Organizador Cables;Accesorios;14.99;201
+35;Base Refrigeración Laptop;Accesorios;34.99;47
+36;Webcam Cover;Accesorios;5.99;315
+37;Filtro Privacidad 15";Accesorios;49.99;29
+38;Limpiador Pantallas Kit;Limpieza;12.50;98
+39;Aire Comprimido;Limpieza;8.99;156
+40;Toallitas Limpiadoras;Limpieza;6.99;234
+41;Pasta Térmica;Componentes;11.99;76
+42;Ventilador PC 120mm;Componentes;19.50;54
+43;Fuente Poder 650W;Componentes;89.99;18
+44;Gabinete ATX RGB;Componentes;79.99;12
+45;Placa Madre B550;Componentes;159.99;8
+46;Procesador Ryzen 5;Componentes;199.99;6
+47;Tarjeta Gráfica GTX;Componentes;399.99;4
+48;Cooler CPU RGB;Componentes;49.99;22
+49;Tarjeta Sonido USB;Audio;59.99;16
+50;Mezcladora Audio 4ch;Audio;189.50;5
+51;Parlantes 2.1 Logitech;Audio;99.99;19
+52;Subwoofer;Audio;149.00;7
+53;Barra Sonido TV;Audio;179.99;9
+54;Audífonos Gaming RGB;Audio;79.99;31
+55;Micrófono Condensador;Audio;69.50;14
+56;Soporte Micrófono;Audio;29.99;42
+57;Filtro Anti-pop;Audio;15.99;67
+58;Interface Audio USB;Audio;129.99;8
+59;Pedal Expresión;Audio;45.00;11
+60;Cable XLR 3m;Cables;24.99;53
+61;Splitter Audio;Accesorios;18.99;89
+62;Convertidor VGA-HDMI;Adaptadores;25.50;44
+63;Extensor HDMI 10m;Cables;39.99;28
+64;Conmutador HDMI 3x1;Accesorios;29.99;36
+65;Control Remoto Universal;Accesorios;34.50;41
+66;Soporte Monitor Dual;Mobiliario;89.99;13
+67;Brazo Articulado Monitor;Mobiliario;119.00;9
+68;Reposapiés Ergonómico;Mobiliario;39.99;27
+69;Cojín Lumbar;Mobiliario;24.99;58
+70;Almohadillas Repuesto;Accesorios;19.99;73
+71;Estuche Herramientas PC;Herramientas;29.50;34
+72;Destornillador Precisión;Herramientas;15.99;62
+73;Pinzas Antiestáticas;Herramientas;12.50;48
+74;Multímetro Digital;Herramientas;34.99;21
+75;Pistola Calor;Herramientas;45.00;15
+76;Estación Soldadura;Herramientas;89.99;6
+77;Kit Limpieza PC;Limpieza;24.99;51
+78;Aspiradora USB Mini;Limpieza;18.50;39
+79;Silicona Térmica;Componentes;8.99;94
+80;Bridas Velcro;Accesorios;9.99;187
+81;LED Strip RGB 2m;Iluminación;29.99;66
+82;Panel LED Inteligente;Iluminación;79.99;17
+83;Bombilla Smart WiFi;Iluminación;19.99;103
+84;Enchufe Inteligente;Domótica;24.99;74
+85;Cámara Seguridad WiFi;Seguridad;89.99;23
+86;Timbre Video WiFi;Seguridad;149.99;11
+87;Sensor Movimiento;Seguridad;29.50;46
+88;Alarma Puerta/Ventana;Seguridad;19.99;81
+89;Cerradura Inteligente;Seguridad;199.99;5
+90;Termostato Smart;Domótica;129.00;8
+91;Detector Humo WiFi;Seguridad;49.99;32
+92;Repetidor WiFi;Redes;39.99;55
+93;Powerline Adapter;Redes;69.99;24
+94;Antena WiFi USB;Redes;25.50;68
+95;Cable Red Cat6 10m;Cables;18.99;91
+96;Patch Panel 24p;Redes;79.99;12
+97;Rack Pared 6U;Mobiliario;149.00;4
+98;UPS 1000VA;Energía;199.99;7
+99;Supresor Picos;Energía;29.99;49
+100;Multicontacto 8 Salidas;Energía;34.50;63

@@ -1,14 +1,13 @@
-/**
- * Implementación de una lista enlazada simple con operaciones básicas.
- * (pushFront, pushBack, find, remove, size, isEmpty, clear)
- * @author Jaime Landázuri
- */
+
 package structures;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.function.Predicate;
 
 public class SimpleList<T> {
-    Node<T> head;
+     Node<T> head;
 
     public SimpleList() {
         this.head = null;
@@ -90,5 +89,65 @@ public class SimpleList<T> {
     // Vacía la lista haciendola apuntar a null
     public void clear(){
         head = null;
+    }
+
+    public static <T> Node<T> firstCoincidence(Node<T> head, Predicate<T> p) throws NoSuchElementException {
+        Node<T> current = head;
+
+        while (current != null) {
+            if (p.test(current.value)) {
+                return current; // Retorna inmediatamente al encontrar el primero
+            }
+            current = current.next;
+        }
+
+        throw new NoSuchElementException("Elemento no encontrado"+p.toString()); // No se encontró ninguna coincidencia
+    }
+    public static <T> Node<T> lastCoincidence(Node<T> head, Predicate<T> p) {
+        Node<T> current = head;
+        Node<T> lastMatch = null; // Guarda la última coincidencia encontrada
+
+        while (current != null) {
+            if (p.test(current.value)) {
+                lastMatch = current; // Actualiza cada vez que encuentra una coincidencia
+            }
+            current = current.next;
+        }
+
+        if (lastMatch == null) {
+            throw new NoSuchElementException("Elemento no encontrado"+p.toString());
+        }
+        return lastMatch; // Retorna el último encontrado (o null si no hubo coincidencias)
+    }
+
+    public static <T> List<Node<T>> findAll(Node<T> head, Predicate<Node<T>> p) {
+        List<Node<T>> results = new ArrayList<>();
+        Node<T> current = head;
+
+        while (current != null) {
+            if (p.test(current)) {
+                results.add(current); // Agrega el nodo completo a la lista
+            }
+            current = current.next;
+        }
+
+        return results; // Retorna lista vacía si no hay coincidencias
+    }
+
+
+    public Node<T> firstCoincidence(Predicate<T> p) {
+        return firstCoincidence(this.head, p);
+    }
+
+
+    public Node<T> lastCoincidence(Predicate<T> p) {
+        return lastCoincidence(this.head, p);
+    }
+
+    /**
+     * Metodo de instancia para encontrar todas las coincidencias en esta lista.
+     */
+    public List<Node<T>> findAll(Predicate<Node<T>> p) {
+        return findAll(this.head, p);
     }
 }
