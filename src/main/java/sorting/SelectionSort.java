@@ -9,10 +9,8 @@ import java.util.Arrays;
 
 public class SelectionSort {
     public static void sort(Integer[] array) {
-        System.out.println("Estado inicial: " + Arrays.toString(array));
         int length = array.length;
         int minIndex; //Indice del numero menor en el arrgelo
-        int swapCount = 0; // Contador de swaps (intercambios)
 
         for(int i = 0;  i < length; i++ ) { // Bucle principal, recorre todo el arreglo para hacer los intercambios
             minIndex = i;
@@ -28,8 +26,6 @@ public class SelectionSort {
             }
 
             SortUtils.swap(minIndex, i, array);
-
-            swapCount++; // Se aumenta el conteo de intercambios
         }
     }
 }
