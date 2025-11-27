@@ -27,18 +27,9 @@ public class SelectionSort {
                 continue;
             }
 
-            System.out.println("Min: " + array[minIndex]); // Numero mas pequeño en iteracion
-            System.out.println("Swap with min: " + array[i]); // Con que numero se va a intercambiar
-
             SortUtils.swap(minIndex, i, array);
 
             swapCount++; // Se aumenta el conteo de intercambios
-
-            System.out.println("  -> Arreglo actual: " + Arrays.toString(array));
         }
-
-        System.out.println("Arreglo ordenado: " + Arrays.toString(array));
-
-        System.out.println("Total de swaps realizados: " + swapCount);
     }
 }
