@@ -90,7 +90,7 @@ public class SimpleList<T> {
     public void clear(){
         head = null;
     }
-
+    // Busca la primera coincidencia con el predicado 'p' desde el nodo 'head', lanza NoSuchElementException si no.
     public static <T> Node<T> firstCoincidence(Node<T> head, Predicate<T> p) throws NoSuchElementException {
         Node<T> current = head;
 
@@ -103,6 +103,7 @@ public class SimpleList<T> {
 
         throw new NoSuchElementException("Elemento no encontrado"+p.toString()); // No se encontró ninguna coincidencia
     }
+    // Busca la última coincidencia con el predicado 'p' desde el nodo 'head', lanza NoSuchElementException si no.
     public static <T> Node<T> lastCoincidence(Node<T> head, Predicate<T> p) {
         Node<T> current = head;
         Node<T> lastMatch = null; // Guarda la última coincidencia encontrada
@@ -119,7 +120,7 @@ public class SimpleList<T> {
         }
         return lastMatch; // Retorna el último encontrado (o null si no hubo coincidencias)
     }
-
+    // Busca y retorna una lista de todos los nodos que cumplen con el predicado 'p' (aplicado al nodo completo).
     public static <T> List<Node<T>> findAll(Node<T> head, Predicate<Node<T>> p) {
         List<Node<T>> results = new ArrayList<>();
         Node<T> current = head;
@@ -134,12 +135,12 @@ public class SimpleList<T> {
         return results; // Retorna lista vacía si no hay coincidencias
     }
 
-
+    // Método de instancia: Busca la primera coincidencia usando el head de esta lista.
     public Node<T> firstCoincidence(Predicate<T> p) {
         return firstCoincidence(this.head, p);
     }
 
-
+    // Método de instancia: Busca la última coincidencia usando el head de esta lista.
     public Node<T> lastCoincidence(Predicate<T> p) {
         return lastCoincidence(this.head, p);
     }
