@@ -61,7 +61,7 @@ Este comando limpiará compilaciones anteriores, descargará la librería common
 Una vez compilado el proyecto, puede ejecutar la clase principal `SearchDemo` directamente desde Maven utilizando el siguiente comando en la terminal:
 
 ```bash
-mvn exec:java -Dexec.mainClass="util.SearchDemo"
+mvn exec:java -Dexec.mainClass="SearchDemo"
 ```
 
 ## Uso de la Aplicación
@@ -73,5 +73,4 @@ Al iniciar el programa, se desplegará un menú interactivo en la consola:
 3.  **Selección de Estructura:**
     * **Opción 1 (Array):** Ejecuta búsquedas secuenciales, con centinela y binaria sobre un arreglo estático.
     * **Opción 2 (SLL):** Convierte los datos a una Lista Enlazada Simple y ejecuta búsquedas utilizando predicados.
-```
 ```
