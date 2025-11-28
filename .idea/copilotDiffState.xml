@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/src/main/java/util/SearchResult.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/util/SearchResult.java" />
+              <option name="originalContent" value="package util;&#10;&#10;/**&#10; * Clase para almacenar el resultado de una busqueda en un arreglo&#10; * @author Jaime Landazuri&#10; */&#10;&#10;public class SearchResult {&#10;    private int index;&#10;    private int value;&#10;&#10;    public SearchResult(int index, int value) {&#10;        this.index = index;&#10;        this.value = value;&#10;    }&#10;&#10;    @Override&#10;    public String toString() {&#10;        return &quot;{Index: &quot; + index + &quot;, Value: &quot; + value + &quot;}&quot;;&#10;    }&#10;}" />
+              <option name="updatedContent" value="package util;&#10;&#10;/**&#10; * Clase para almacenar el resultado de una busqueda en un arreglo&#10; * @author Jaime Landazuri&#10; */&#10;&#10;public class SearchResult {&#10;    private int index;&#10;    private int value;&#10;&#10;    public SearchResult(int index, int value) {&#10;        this.index = index;&#10;        this.value = value;&#10;    }&#10;&#10;    public int getIndex() {&#10;        return index;&#10;    }&#10;&#10;    public int getValue() {&#10;        return value;&#10;    }&#10;&#10;    @Override&#10;    public String toString() {&#10;        return &quot;{Index: &quot; + index + &quot;, Value: &quot; + value + &quot;}&quot;;&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

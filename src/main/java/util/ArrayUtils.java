@@ -63,8 +63,8 @@ public class ArrayUtils {
         }
     }
 
-    // Retorna la primera coincidencia del elemento key en el arreglo usando busqueda binaria
-    public static Integer binarySearch(Integer[] array, Integer key) throws NoSuchElementException {
+    // Retorna el indice de la aparicion del elemento key en el arreglo usando busqueda binaria
+    public static int binarySearch(Integer[] array, Integer key) throws NoSuchElementException {
         int left = 0;
         int right = array.length - 1;
 
@@ -72,7 +72,7 @@ public class ArrayUtils {
             int mid = left + (right - left) / 2;
 
             if (array[mid].equals(key)) {
-                return array[mid];
+                return mid; // ahora retorna índice
             }
 
             if (array[mid] < key) {

@@ -1,4 +1,3 @@
-
 package structures;
 
 import java.util.ArrayList;
@@ -150,5 +149,15 @@ public class SimpleList<T> {
      */
     public List<Node<T>> findAll(Predicate<Node<T>> p) {
         return findAll(this.head, p);
+    }
+
+    // Conveniencia: busqueda por valor (firma pedida por la práctica)
+    public Node<T> findFirst(T key) {
+        return firstCoincidence(this.head, v -> v.equals(key));
+    }
+
+    // Conveniencia: ultima coincidencia por valor
+    public Node<T> findLast(T key) {
+        return lastCoincidence(this.head, v -> v.equals(key));
     }
 }

@@ -9,11 +9,12 @@ public class Node<T> {
         this.next = null;
     }
 
+    public T getValue() {
+        return this.value;
+    }
+
     public Node<T> getNext() {
         return next;
     }
 
-    public void setNext(Node<T> next) {
-        this.next = next;
-    }
 }
