@@ -1,8 +1,9 @@
-package util;
-
 import sorting.SelectionSort;
 import structures.Node;
 import structures.SimpleList;
+import util.ArrayUtils;
+import util.CsvReader;
+import util.SearchResult;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -77,7 +78,59 @@ public class SearchDemo {
      */
     private static void procesarArchivo(String fileName, String columnName) throws Exception {
 
-        Integer[] datos = loadIntegerColumn(fileName, columnName);
+        // Mostrar las columnas disponibles y permitir seleccionar una distinta
+        String[] headers;
+        String filePath = "src/main/resources/" + fileName;
+        try {
+            headers = CsvReader.getNumericHeaders(filePath);
+        } catch (IOException e) {
+            // intentar la otra ruta
+            filePath = "src/main/java/resources/" + fileName;
+            headers = CsvReader.getNumericHeaders(filePath);
+        }
+
+        if (headers.length == 0) {
+            System.out.println("No se encontraron columnas numéricas en el archivo. No es posible realizar búsquedas numéricas.");
+            return;
+        }
+
+        System.out.println("\nColumnas disponibles en '" + fileName + "':");
+        for (int i = 0; i < headers.length; i++) {
+            System.out.println((i + 1) + ". " + headers[i]);
+        }
+
+        System.out.print("Seleccione columna por número (ENTER para usar '" + columnName + "' si es numérica): ");
+        String colInput = sc.nextLine().trim();
+        String chosenColumn = columnName;
+        // Si la columna por defecto no está entre las numéricas, usar la primera disponible
+        boolean defaultIsNumeric = false;
+        for (String h : headers) if (h.equalsIgnoreCase(columnName)) { defaultIsNumeric = true; break; }
+        if (!defaultIsNumeric) {
+            System.out.println("La columna por defecto '" + columnName + "' no es numérica; se usará '" + headers[0] + "' a menos que seleccione otra.");
+            chosenColumn = headers[0];
+        }
+        if (!colInput.isEmpty()) {
+            try {
+                int idx = Integer.parseInt(colInput) - 1;
+                if (idx >= 0 && idx < headers.length) chosenColumn = headers[idx];
+                else System.out.println("Índice fuera de rango, usando columna por defecto.");
+            } catch (NumberFormatException ex) {
+                // permitir que el usuario escriba el nombre de la columna
+                boolean found = false;
+                for (String h : headers) if (h.equalsIgnoreCase(colInput)) { chosenColumn = h; found = true; break; }
+                if (!found) System.out.println("Nombre de columna no reconocido, usando columna por defecto.");
+            }
+        }
+
+        // Mostrar algunos valores de ejemplo de la columna seleccionada
+        System.out.println("\nMuestra de valores de la columna '" + chosenColumn + "':");
+        String[] samples = CsvReader.readSampleValues(filePath, chosenColumn, 10);
+        if (samples.length == 0) System.out.println("(no hay valores o columna incorrecta)");
+        else {
+            for (int i = 0; i < samples.length; i++) System.out.println((i + 1) + ") " + samples[i]);
+        }
+
+        Integer[] datos = loadIntegerColumn(fileName, chosenColumn);
 
         if (datos.length == 0) {
             System.out.println("Error: archivo vacío o columna incorrecta.");
@@ -128,10 +181,12 @@ public class SearchDemo {
         System.out.println("                DEMO CON ARREGLOS                    ");
         System.out.println("-----------------------------------------------------");
 
-        int[] keys = {7, 5, 2, 42};
+        int[] defaultKeys = {19, 21, 201};
+
+        int[] keys = promptForKeys(defaultKeys);
 
         for (int key : keys) {
-            System.out.println("\nBuscando clave: " + key + "");
+            System.out.println("\nBuscando clave: " + key);
             System.out.println("-----------------------------------------------------");
 
             // ----------- Primera coincidencia -----------
@@ -181,6 +236,32 @@ public class SearchDemo {
         }
     }
 
+    /**
+     * Lee del usuario claves separadas por comas. Si el usuario presiona ENTER
+     * devuelve las claves por defecto.
+     */
+    public static int[] promptForKeys(int[] defaultKeys) {
+        while (true) {
+            System.out.print("Ingrese claves a buscar separadas por comas (ENTER para usar " + Arrays.toString(defaultKeys) + "): ");
+            String line = sc.nextLine().trim();
+            if (line.isEmpty()) return defaultKeys;
+            String[] parts = line.split("[,\\s]+");
+            int[] keys = new int[parts.length];
+            boolean ok = true;
+            for (int i = 0; i < parts.length; i++) {
+                try {
+                    keys[i] = Integer.parseInt(parts[i].trim());
+                } catch (NumberFormatException ex) {
+                    System.out.println("Entrada inválida: '" + parts[i] + "' no es un entero.");
+                    ok = false;
+                    break;
+                }
+            }
+            if (ok) return keys;
+            System.out.println("Intente nuevamente o presione ENTER para usar los valores por defecto.");
+        }
+    }
+
     public static int firstIndexOf(Integer[] a, int key) {
         for (int i = 0; i < a.length; i++)
             if (a[i] == key) return i;
@@ -216,24 +297,27 @@ public class SearchDemo {
         System.out.println("\n-----------------------------------------------------");
         System.out.println("            DEMO CON LISTA ENLAZADA SIMPLE           ");
         System.out.println("-----------------------------------------------------");
-        int key = 3;
+        int[] defaultKey = {3};
+        int[] keys = promptForKeys(defaultKey);
 
-        // ----------- Primero que coincide -----------
-        try {
-            Node<Integer> first = list.findFirst(key);
-            System.out.print("Primera coincidencia de " + key + ": ");
-            printNode(first);
-        } catch (NoSuchElementException ex) {
-            System.out.println("Primera coincidencia no encontrada");
-        }
+        for (int key : keys) {
+            // ----------- Primero que coincide -----------
+            try {
+                Node<Integer> first = list.findFirst(key);
+                System.out.print("Primera coincidencia de " + key + ": ");
+                printNode(first);
+            } catch (NoSuchElementException ex) {
+                System.out.println("Primera coincidencia no encontrada para " + key);
+            }
 
-        // ----------- Último que coincide -----------
-        try {
-            Node<Integer> last = list.findLast(key);
-            System.out.print("Última coincidencia de " + key + ": ");
-            printNode(last);
-        } catch (NoSuchElementException ex) {
-            System.out.println("Última coincidencia no encontrada");
+            // ----------- Último que coincide -----------
+            try {
+                Node<Integer> last = list.findLast(key);
+                System.out.print("Última coincidencia de " + key + ": ");
+                printNode(last);
+            } catch (NoSuchElementException ex) {
+                System.out.println("Última coincidencia no encontrada para " + key);
+            }
         }
 
         // ----------- findAll con predicado (value < 3) -----------
